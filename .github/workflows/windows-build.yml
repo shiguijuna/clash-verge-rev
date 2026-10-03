@@ -23,6 +23,9 @@ concurrency:
   group: windows-build-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   build-windows:
     name: Build Windows (${{ matrix.target }})
