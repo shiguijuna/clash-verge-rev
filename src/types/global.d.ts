@@ -265,6 +265,12 @@ interface IVergeTestItem {
   icon?: string
   url: string
 }
+interface IVergeAutoSelectProvider {
+  name?: string
+  url?: string
+  prefix?: string
+  interval?: number
+}
 interface IAddress {
   V4?: {
     ip: string
@@ -932,6 +938,15 @@ interface IVergeConfig {
   default_latency_timeout?: number
   enable_auto_delay_detection?: boolean
   auto_delay_detection_interval_minutes?: number
+  enable_auto_select?: boolean
+  auto_select_group_name?: string
+  auto_select_target_name?: string
+  auto_select_test_url?: string
+  auto_select_interval?: number
+  auto_select_tolerance?: number
+  auto_select_exclude_filter?: string
+  auto_select_name_prefix?: string
+  auto_select_extra_providers?: IVergeAutoSelectProvider[]
   enable_builtin_enhanced?: boolean
   auto_log_clean?: 0 | 1 | 2 | 3 | 4
   enable_auto_backup_schedule?: boolean

@@ -646,6 +646,40 @@
         "ipAddress": "IP 地址",
         "macAddress": "MAC 地址"
       }
+    },
+    "autoSelect": {
+      "title": "自动测速与自动选节点",
+      "fields": {
+        "enable": "启用自动选节点",
+        "groupName": "外层组名",
+        "targetName": "内层测速组名",
+        "testUrl": "测速地址",
+        "interval": "测速间隔",
+        "tolerance": "切换容差",
+        "excludeFilter": "节点排除规则",
+        "namePrefix": "节点名前缀",
+        "extraProviders": "额外订阅源"
+      },
+      "tooltips": {
+        "enable": "定时测速内层组中的节点，并将外层组自动切换到延迟最低的节点",
+        "groupName": "需要自动切换的 select 类型组名",
+        "targetName": "存放候选节点的 url-test 组名",
+        "testUrl": "用于测量节点延迟的地址",
+        "interval": "节点测速的频率，单位为秒",
+        "tolerance": "仅当最快节点比当前节点快出该毫秒值时才会切换",
+        "excludeFilter": "用于将节点排除在自动选择之外的正则或关键词",
+        "namePrefix": "为自动选节点生成的节点名添加的前缀",
+        "extraProviders": "合并进候选组的额外订阅源"
+      },
+      "extraProviders": {
+        "add": "添加订阅源",
+        "remove": "删除订阅源",
+        "name": "名称",
+        "url": "订阅地址",
+        "prefix": "前缀",
+        "interval": "更新间隔（秒）",
+        "empty": "暂无额外订阅源，点击 + 添加"
+      }
     }
   },
   "feedback": {

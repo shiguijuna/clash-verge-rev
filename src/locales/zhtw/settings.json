@@ -646,6 +646,40 @@
         "ipAddress": "IP 位址",
         "macAddress": "MAC 位址"
       }
+    },
+    "autoSelect": {
+      "title": "自動測速與自動選節點",
+      "fields": {
+        "enable": "啟用自動選節點",
+        "groupName": "外層組名",
+        "targetName": "內層測速組名",
+        "testUrl": "測速位址",
+        "interval": "測速間隔",
+        "tolerance": "切換容差",
+        "excludeFilter": "節點排除規則",
+        "namePrefix": "節點名稱前綴",
+        "extraProviders": "額外訂閱來源"
+      },
+      "tooltips": {
+        "enable": "定時測速內層群組中的節點，並將外層群組自動切換到延遲最低的節點",
+        "groupName": "需要自動切換的 select 類型群組名稱",
+        "targetName": "存放候選節點的 url-test 群組名稱",
+        "testUrl": "用於測量節點延遲的位址",
+        "interval": "節點測速的頻率，單位為秒",
+        "tolerance": "僅當最快節點比目前節點快出該毫秒值時才會切換",
+        "excludeFilter": "用於將節點排除在自動選擇之外的正規表示式或關鍵字",
+        "namePrefix": "為自動選節點產生的節點名稱加上前綴",
+        "extraProviders": "合併進候選群組的額外訂閱來源"
+      },
+      "extraProviders": {
+        "add": "新增訂閱來源",
+        "remove": "刪除訂閱來源",
+        "name": "名稱",
+        "url": "訂閱網址",
+        "prefix": "前綴",
+        "interval": "更新間隔（秒）",
+        "empty": "尚無額外訂閱來源，點擊 + 新增"
+      }
     }
   },
   "feedback": {

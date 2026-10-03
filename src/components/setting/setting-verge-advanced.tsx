@@ -17,6 +17,7 @@ import { showNotice } from '@/services/notice-service'
 import { checkUpdateSafe as checkUpdate } from '@/services/update'
 import { version } from '@root/package.json'
 
+import { AutoSelectViewer } from './mods/auto-select-viewer'
 import { BackupViewer } from './mods/backup-viewer'
 import { ConfigViewer } from './mods/config-viewer'
 import { HotkeyViewer } from './mods/hotkey-viewer'
@@ -35,6 +36,7 @@ const SettingVergeAdvanced = ({ onError: _ }: Props) => {
   const { t } = useTranslation()
 
   const configRef = useRef<DialogRef>(null)
+  const autoSelectRef = useRef<DialogRef>(null)
   const hotkeyRef = useRef<DialogRef>(null)
   const miscRef = useRef<DialogRef>(null)
   const themeRef = useRef<DialogRef>(null)
@@ -77,6 +79,7 @@ const SettingVergeAdvanced = ({ onError: _ }: Props) => {
   return (
     <SettingList title={t('settings.components.verge.advanced.title')}>
       <ThemeViewer ref={themeRef} />
+      <AutoSelectViewer ref={autoSelectRef} />
       <ConfigViewer ref={configRef} />
       <HotkeyViewer ref={hotkeyRef} />
       <MiscViewer ref={miscRef} />
@@ -94,6 +97,11 @@ const SettingVergeAdvanced = ({ onError: _ }: Props) => {
             sx={{ opacity: '0.7' }}
           />
         }
+      />
+
+      <SettingItem
+        onClick={() => autoSelectRef.current?.open()}
+        label={t('settings.modals.autoSelect.title')}
       />
 
       <SettingItem

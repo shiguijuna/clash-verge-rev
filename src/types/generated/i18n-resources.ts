@@ -862,6 +862,40 @@ export interface TranslationResources {
         }
       }
       modals: {
+        autoSelect: {
+          extraProviders: {
+            add: string
+            empty: string
+            interval: string
+            name: string
+            prefix: string
+            remove: string
+            url: string
+          }
+          fields: {
+            enable: string
+            excludeFilter: string
+            extraProviders: string
+            groupName: string
+            interval: string
+            namePrefix: string
+            targetName: string
+            testUrl: string
+            tolerance: string
+          }
+          title: string
+          tooltips: {
+            enable: string
+            excludeFilter: string
+            extraProviders: string
+            groupName: string
+            interval: string
+            namePrefix: string
+            targetName: string
+            testUrl: string
+            tolerance: string
+          }
+        }
         backup: {
           actions: {
             backup: string
