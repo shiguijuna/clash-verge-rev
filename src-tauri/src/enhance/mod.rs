@@ -1,3 +1,4 @@
+mod auto_select;
 mod chain;
 pub mod field;
 mod merge;
@@ -6,6 +7,7 @@ pub mod seq;
 mod tun;
 
 use self::{
+    auto_select::{AutoSelectParams, use_auto_select},
     chain::{AsyncChainItemFrom as _, ChainItem, ChainType},
     field::{use_keys, use_lowercase_owned, use_sort},
     merge::use_merge,
@@ -962,6 +964,15 @@ pub async fn enhance(
     notify_discarded_keys(authoritative.overridden(&authoritative, &authoritative.current(&config)));
     let config = authoritative.enforce(config);
     let config = ensure_lan_bind_address(config);
+    // Native auto-select runs after the user's merge/script chain and before cleanup prunes stale refs.
+    let config = {
+        let verge = Config::verge().await;
+        if let Some(params) = AutoSelectParams::from_verge(&verge.latest_arc()) {
+            use_auto_select(config, &params)
+        } else {
+            config
+        }
+    };
 
     let config = cleanup_proxy_groups(config);
     let config = use_sort(config);

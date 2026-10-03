@@ -207,6 +207,42 @@ pub struct IVerge {
     pub hover_jump_navigator_delay: Option<u64>,
 
     pub enable_external_controller: Option<bool>,
+
+    /// Collapses the profile's proxy-groups into one select group over one url-test group.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub enable_auto_select: Option<bool>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auto_select_group_name: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auto_select_target_name: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auto_select_test_url: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auto_select_interval: Option<u64>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auto_select_tolerance: Option<u32>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auto_select_exclude_filter: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auto_select_name_prefix: Option<String>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub auto_select_extra_providers: Option<Vec<IAutoSelectProvider>>,
+}
+
+#[derive(Default, Debug, Clone, Deserialize, Serialize)]
+pub struct IAutoSelectProvider {
+    pub name: Option<String>,
+    pub url: Option<String>,
+    pub prefix: Option<String>,
+    pub interval: Option<u64>,
 }
 
 #[derive(Default, Debug, Clone, Deserialize, Serialize)]
@@ -391,6 +427,10 @@ impl IVerge {
             enable_dns_settings: Some(false),
             home_cards: None,
             enable_external_controller: Some(false),
+            enable_auto_select: Some(true),
+            auto_select_interval: Some(60),
+            auto_select_tolerance: Some(50),
+            auto_select_exclude_filter: Some("官网网址".into()),
             ..Self::default()
         }
     }
@@ -493,6 +533,15 @@ impl IVerge {
         patch!(enable_dns_settings);
         patch!(home_cards);
         patch!(enable_external_controller);
+        patch!(enable_auto_select);
+        patch!(auto_select_group_name);
+        patch!(auto_select_target_name);
+        patch!(auto_select_test_url);
+        patch!(auto_select_interval);
+        patch!(auto_select_tolerance);
+        patch!(auto_select_exclude_filter);
+        patch!(auto_select_name_prefix);
+        patch!(auto_select_extra_providers);
     }
 
     pub fn get_log_level(&self) -> LevelFilter {
